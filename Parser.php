@@ -13,11 +13,14 @@ class Parser {
      *      
      */
     public function parse($branch = 'master') {
-        //exec('git log --graph --pretty=format:"H:%H%naN:%aN%naE:%aE%nai:%ai%ncN:%cN%ncE:%cE%nci:%ci%ns:%s%nb:%b%n%n" ' . $branch, $output);
-        exec('git log --graph --abbrev-commit --decorate --pretty=format:"%n%h%n%aD%n%s%n%d" ' . $branch, $output);
+        exec('git log --graph --abbrev-commit --decorate --all --pretty=format:"%h %n %aD %n %s %n %d" ' . $branch, $output);
+        $output = array_chunk($output, 5);
         foreach($output as $linepart) {
-            
-            print_r($linepart);echo '<br />';
+            //$depth = substr_count($linepart, '|');
+            foreach($linepart as $test) {
+                print_r($test);echo '<br />';
+            }
+            echo '<br><br>';
         }
     }
 }
