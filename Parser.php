@@ -9,6 +9,8 @@ class Parser {
     /**
      * @param string $branch
      * @see https://git-scm.com/docs/pretty-formats
+     *
+     *      
      */
     public function parse($branch = 'master') {
         //exec('git log --graph --pretty=format:"H:%H%naN:%aN%naE:%aE%nai:%ai%ncN:%cN%ncE:%cE%nci:%ci%ns:%s%nb:%b%n%n" ' . $branch, $output);
